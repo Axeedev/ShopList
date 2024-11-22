@@ -14,7 +14,7 @@ object ShopListRepositoryImpl : ShopListRepository {
     init {
         for (i in 0 until  1000){
             val item = ShopItem("name$i",i, Random.nextBoolean())
-            items.add(item)
+            addShopItem(item)
         }
     }
     override fun addShopItem(shopItem: ShopItem) {
@@ -32,8 +32,8 @@ object ShopListRepositoryImpl : ShopListRepository {
 
     override fun editItem(shopItem: ShopItem) {
         val old = getItem(shopItem.id)
-        items.remove(old)
-        items.add(shopItem)
+        deleteShopItem(old)
+        addShopItem(shopItem)
     }
 
     override fun getItem(id: Int): ShopItem {
